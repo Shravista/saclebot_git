@@ -1,0 +1,6 @@
+string msg
+bool write
+uint8[] data
+---
+bool success
+string response

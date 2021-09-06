@@ -1,0 +1,6 @@
+string msg
+int32 num
+bool write
+---
+bool success
+string response
