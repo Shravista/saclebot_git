@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot name="coke_can">
+    <link name="world"/>
+    <link name="coke_can_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.39" />
+      <inertia ixx="0.00055575" ixy="0.0" ixz="0.0" iyy="0.00055575" iyz="0.0" izz="0.0001755" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://competition_world/models/meshes/coke_can.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://competition_world/models/meshes/coke_can.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="coke_can_joint" type="fixed">
+    <parent link="world"/>
+    <child link="coke_can_link"/>
+    <origin xyz="0 0 0.0" rpy="0 0 0"/>
+  </joint>
+</robot>

@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+	<world name="default">
+		<light name='sun' type='directional'>
+      		<cast_shadows>1</cast_shadows>
+      		<pose>0 0 20 0 -0 0</pose>
+      		<diffuse>0.8 0.8 0.8 1</diffuse>
+      		<specular>0.2 0.2 0.2 1</specular>
+      		<attenuation>
+       			<range>1000</range>
+        		<constant>0.9</constant>
+        		<linear>0.01</linear>
+        		<quadratic>0.01</quadratic>
+      		</attenuation>
+      		<direction>0.109 0.109764 -0.987878</direction>
+      		<spot>
+        		<inner_angle>0</inner_angle>
+        		<outer_angle>0</outer_angle>
+       			<falloff>0</falloff>
+      		</spot>
+    	</light>
+    	<light name='ceiling' type='point'>
+      		<cast_shadows>1</cast_shadows>
+      		<pose>1.5 1.5 3.0 0 -0 0</pose>
+      		<diffuse>0.5 0.5 0.5 1</diffuse>
+      		<specular>0.02 0.02 0.02 1</specular>
+      		<attenuation>
+       			<range>3.32</range>
+        		<constant>0.5</constant>
+        		<linear>0.01</linear>
+        		<quadratic>0.00</quadratic>
+      		</attenuation>
+      		<spot>
+        		<inner_angle>0</inner_angle>
+        		<outer_angle>0</outer_angle>
+       			<falloff>0</falloff>
+      		</spot>
+    	</light>
+    	<model name='ground_plane'>
+      		<static>1</static>
+      		<link name='link'>
+        		<collision name='collision'>
+          			<geometry>
+            			<plane>
+            		  		<normal>0 0 1</normal>
+            		  		<size>100 100</size>
+            				</plane>
+          			</geometry>
+          			<surface>
+            			<contact>
+            			  <collide_bitmask>65535</collide_bitmask>
+            			  <ode/>
+            			</contact>
+            			<friction>
+            		  		<ode>
+            		    		<mu>100</mu>
+            		    		<mu2>50</mu2>
+            		  		</ode>
+            		  		<torsional>
+            		    		<ode/>
+            		  		</torsional>
+            			</friction>
+            			<bounce/>
+          			</surface>
+          			<max_contacts>10</max_contacts>
+        		</collision>
+        		<visual name='visual'>
+          			<cast_shadows>0</cast_shadows>
+          			<geometry>
+            			<plane>
+            	  		<normal>0 0 1</normal>
+            	  		<size>100 100</size>
+            			</plane>
+          			</geometry>
+          			<material>
+            			<script>
+            	  			<uri>file://media/materials/scripts/gazebo.material</uri>
+            	  			<name>Gazebo/Grey</name>
+            			</script>
+          			</material>
+        		</visual>
+        		<self_collide>0</self_collide>
+        		<enable_wind>0</enable_wind>
+        		<kinematic>0</kinematic>
+      		</link>
+    	</model>
+    	<gravity>0 0 -9.8</gravity>
+    	<magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    	<atmosphere type='adiabatic'/>
+    	<physics type='ode'>
+      		<max_step_size>0.001</max_step_size>
+      		<real_time_factor>1</real_time_factor>
+      		<real_time_update_rate>1000</real_time_update_rate>
+    	</physics>
+    	<scene>
+    	  <ambient>0.4 0.4 0.4 1</ambient>
+    	  <background>0.7 0.7 0.7 1</background>
+    	  <shadows>1</shadows>
+    	</scene>
+    	<wind/>
+    	<spherical_coordinates>
+      		<surface_model>EARTH_WGS84</surface_model>
+      		<latitude_deg>0</latitude_deg>
+      		<longitude_deg>0</longitude_deg>
+      		<elevation>0</elevation>
+      		<heading_deg>0</heading_deg>
+    	</spherical_coordinates>
+		<model name="floor_exterior">
+			<static>true</static>
+			<link name="floor_exterior_link">
+				<pose>1.570 1.570 0 0 0 0</pose>
+				<inertial>
+					<mass>16.2</mass>
+					<inertia>
+						<ixx>194.476917</ixx>
+						<ixy>82.621125</ixy>
+						<ixz>-0.076725</ixz>
+						<iyy>194.476917</iyy>
+						<iyz>0.076725</iyz>
+						<izz>388.952750</izz>
+						</inertia>
+					</inertial>
+				<collision name="floor_exterior_collision">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/floor_iisc_exterior.dae</uri>
+						</mesh>
+					</geometry>
+				</collision>
+				<visual name="floor_exterior_vis">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/floor_iisc_exterior.dae</uri>
+						</mesh>
+					</geometry>
+					<!--<material>
+						<script>
+							<uri>model://materials/scripts/iisc_robotic_challenge_material.material</uri>
+							<name>FloorExteriorTexture</name>
+						</script>
+					</material>-->
+				</visual>
+			</link>
+		</model>
+		<model name="floor_interior">
+			<static>true</static>
+			<link name="floor_interior_link">
+				<pose>0 0 0 0 0 0</pose>
+				<inertial>
+					<mass>2.439</mass>
+					<inertia>
+						<ixx>7.317081</ixx>
+						<ixy>5.487750</ixy>
+						<ixz>0.0189293</ixz>
+						<iyy>7.317081</iyy>
+						<iyz>0.0189293</iyz>
+						<izz>14.6340</izz>
+						</inertia>
+					</inertial>
+				<collision name="floor_interior_collision">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/floor_iisc_interior.dae</uri>
+						</mesh>
+					</geometry>
+				</collision>
+				<visual name="floor_interior_vis">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/floor_iisc_interior.dae</uri>
+						</mesh>
+					</geometry>
+					<material>
+						<script>
+							<uri>model://materials/scripts/iisc_robotic_challenge_material.material</uri>
+							<name>FloorInteriorWhiteChecksTexture</name>
+						</script>
+					</material>
+				</visual>
+			</link>
+		</model>
+		<model name="washroom">
+			<static>true</static>
+			<link name="washroom_link">
+				<pose>-0.14 3.14 0.10 0 0 -1.570796327</pose><!-- -0.14 -0.14 -->
+				<collision name="washroom_collision">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/WashRoomWalls.dae</uri>
+						</mesh>
+					</geometry>
+				</collision>
+				<visual name="washroom_vis">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/WashRoomWalls.dae</uri>
+						</mesh>
+					</geometry>
+					<!--<material>
+						<script>
+							<uri>model://materials/scripts/iisc_robotic_challenge_material.material</uri>
+							<name>WallTilesStoneFancyTexture</name>
+						</script>
+					</material>-->
+				</visual>
+			</link>
+		</model>
+		<model name="washroomDoor">
+			<static>true</static>
+			<link name="washroomDoor_link">
+				<pose>-0.073 0.194 0.10 0 0 0</pose>
+				<collision name="washroomDoor_collision">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/washRoomDoor.dae</uri>
+						</mesh>
+					</geometry>
+				</collision>
+				<visual name="washroomDoor_vis">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/washRoomDoor.dae</uri>
+						</mesh>
+					</geometry>
+				</visual>
+			</link>
+		</model>
+		<model name="washroomWindow1">
+			<static>true</static>
+			<link name="washroomWindow1_link">
+				<pose>3.07 0.945 1.50 0 0 0</pose>
+				<collision name="washroomWindow1_collision">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/washRoomWindow.dae</uri>
+						</mesh>
+					</geometry>
+				</collision>
+				<visual name="washroomWindow1_vis">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/washRoomWindow.dae</uri>
+						</mesh>
+					</geometry>
+				</visual>
+			</link>
+		</model>
+		<model name="washroomWindow2">
+			<static>true</static>
+			<link name="washroomWindow2_link">
+				<pose>3.07 2.215 1.50 0 0 0</pose>
+				<collision name="washroomWindow2_collision">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/washRoomWindow.dae</uri>
+						</mesh>
+					</geometry>
+				</collision>
+				<visual name="washroomWindow2_vis">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/washRoomWindow.dae</uri>
+						</mesh>
+					</geometry>
+				</visual>
+			</link>
+		</model>
+		<model name="washroomBasin">
+			<static>true</static>
+			<link name="washroomBasin_link">
+				<pose>0.605 2.6974795 1.12 0 0 0</pose>
+				<collision name="washroomBasin_collision">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/wash_base_sink.dae</uri>
+						</mesh>
+					</geometry>
+				</collision>
+				<visual name="washroomBasin_vis">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/wash_base_sink.dae</uri>
+						</mesh>
+					</geometry>
+				</visual>
+			</link>
+		</model>
+		<model name="washroomTap">
+			<static>true</static>
+			<link name="washroomTap_link">
+				<pose>0.605 2.91 1.12 0 0 1.570796327</pose>
+				<collision name="washroomTap_collision">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/tap.dae</uri>
+						</mesh>
+					</geometry>
+				</collision>
+				<visual name="washroomTap_vis">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/tap.dae</uri>
+						</mesh>
+					</geometry>
+				</visual>
+			</link>
+		</model>
+		<model name="washroomCommode">
+			<static>true</static>
+			<link name="washroomCommode_link">
+				<pose>2.5 2.5 0.10 0 0 3.141592653</pose>
+				<collision name="washroomCommode_collision">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/commode.dae</uri>
+						</mesh>
+					</geometry>
+				</collision>
+				<visual name="washroomCommode_vis">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/commode.dae</uri>
+						</mesh>
+					</geometry>
+					<material>
+						<script>
+							<uri>model://materials/scripts/iisc_robotic_challenge_material.material</uri>
+							<name>DullWhite</name>
+						</script>
+					</material>
+				</visual>
+			</link>
+		</model>
+		<model name="washroomMirror">
+			<static>true</static>
+			<link name="washroomMirror_link">
+				<pose>0.375 2.985 1.40 0 0 0</pose>
+				<collision name="washroomMirror_collision">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/WashRoomMirror.dae</uri>
+						</mesh>
+					</geometry>
+				</collision>
+				<visual name="washroomMirror_vis">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/WashRoomMirror.dae</uri>
+						</mesh>
+					</geometry>
+				</visual>
+			</link>
+		</model>
+		<model name="washroomDustbin">
+			<static>true</static>
+			<link name="washroomCommode_link">
+				<pose>2.0 2.5 0.1 0 0 0</pose>
+				<collision name="washroomDustbin_collision">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/WashRoomDustBin.dae</uri>
+						</mesh>
+					</geometry>
+				</collision>
+				<visual name="washroomDustbin_vis">
+					<geometry>
+						<mesh>
+							<uri>model://meshes/WashRoomDustBin.dae</uri>
+						</mesh>
+					</geometry>
+				</visual>
+			</link>
+		</model>
+	</world>
+</sdf>

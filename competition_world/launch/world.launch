@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(find competition_world)/world/washroom_iisc_robotics_challenge.world"/>
+		<arg name="paused" value="false"/>
+		<arg name="use_sim_time" value="true"/>
+		<arg name="gui" value="true"/>
+		<arg name="headless" value="false"/>
+		<arg name="debug" value="false"/>
+<!--		<arg name="verbose" value="true" />-->
+	</include>
+	<rosparam file="$(find competition_world)/config/urdf_params.yaml" command="load" />
+	
+	<node name="saclebot_objects_urdf_spawner" pkg="competition_world" type="urdf_spawner.py" output="screen"/>
+	
+</launch>

@@ -1,0 +1,179 @@
+material FloorExteriorTexture
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/LightWoodenParquetFlooring03_2K_BaseColor.png
+       scale 0.25 0.25
+      }
+    }
+  }
+}
+
+material FloorInteriorTextureBlue
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/BlueHerringboneTiles01_2K_BaseColor.png
+       scale 0.25 0.25
+      }
+    }
+  }
+}
+
+material FloorInteriorTextureWhite
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/StoneTilesFloor03_2K_BaseColor.png
+       scale 0.25 0.25
+      }
+    }
+  }
+}
+
+material FloorInteriorWhiteChecksTexture
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/IV033DCH5004.jpg
+       scale 0.25 0.25
+      }
+    }
+  }
+}
+
+material WallTilesBlackTexture
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/BathroomTiles03_3K_BaseColor.png
+       scale 0.25 0.25
+      }
+    }
+  }
+}
+
+material WallTilesWoodenTexture
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/WoodenPlatesFloor01_3K_BaseColor.png
+       scale 0.25 0.25
+      }
+    }
+  }
+}
+
+material WallTilesWhiteTexture
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/BathroomFloorTiles01_2K_BaseColor.png
+       scale 0.25 0.25
+      }
+    }
+  }
+}
+
+material WallTilesFancyTexture
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/Tiles05_COL_VAR1_3K.jpg
+       scale 0.25 0.25
+      }
+    }
+  }
+}
+
+material WallTilesStoneTexture
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/NaturalStone05_3K_BaseColor.png
+       scale 0.25 0.25
+      }
+    }
+  }
+}
+
+material WallTilesStoneFancyTexture
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/StoneTilesFloor03_4K_BaseColor.png
+       scale 0.25 0.25
+      }
+    }
+  }
+}
+
+material WoodDark
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture_unit ../textures/Wood10_3K_BaseColor.png
+       scale 1 1
+      }
+    }
+  }
+}
+ 
+material DullWhite
+{
+   technique
+   {
+      pass
+      {
+         lighting on
+
+         ambient 0.6 0.6 0.6 1
+         diffuse 1 1 1 1
+         emissive 0 0 0 1
+      }
+   }
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+	<model name="floor_exterior">
+		<static>true</static>
+		<link name="floor_exterior_link">
+			<collision>
+				<geometry>
+					<mesh>
+						<uri>model://meshes/floor_iisc_exterior.dae</uri>
+					</mesh>
+				</geometry>
+			</collision>
+			<visual name="floor_exterior_vis">
+				<geometry>
+					<mesh>
+						<uri>model://meshes/floor_iisc_exterior.dae</uri>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+	</model>
+</sdf>
+	

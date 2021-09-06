@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot name="paper_cup">
+    <link name="world"/>
+    <link name="red_paper_cup_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.0101" />
+      <inertia ixx="1.293E-06" ixy="0.0" ixz="0.0" iyy="1.293E-06" iyz="0.0" izz="2.545E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://competition_world/models/meshes/red_paper_cup.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://competition_world/models/meshes/red_paper_cup.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="paper_cup_joint" type="fixed">
+    <parent link="world"/>
+    <child link="red_paper_cup_link"/>
+    <origin xyz="0 0 0.0" rpy="0 0 0"/>
+  </joint>
+</robot>

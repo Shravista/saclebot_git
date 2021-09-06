@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="x" value="0.0" />
+        <arg name="y" value="0.0" />
+        <arg name="z" value="0.028" />
+        <arg name="urdf_robot_file" value="$(find competition_world)/urdf/paper_cup.urdf"/>
+	    <param name="robot_description" command="cat $(arg urdf_robot_file)" />
+	    
+	    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -x $(arg x) -y $(arg y) -z $(arg z)  -model paper_cup -param robot_description"/>
+<!--        <node name="paper_cup_tf" pkg="robot_state_publisher" type="robot_state_publisher"-->
+<!--        respawn="false" output="screen" >-->
+<!--    </node>-->
+</launch>
+        
