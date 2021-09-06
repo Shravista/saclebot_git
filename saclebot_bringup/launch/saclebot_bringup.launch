@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <include file = "$(find competition_world)/launch/world.launch"/>
+    <include file = "$(find saclebot_description)/launch/saclebot_gazebo.launch"/>
+</launch>
