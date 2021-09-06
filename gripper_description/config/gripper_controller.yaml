@@ -1,0 +1,28 @@
+  # Publish all joints ---------------------------------
+
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+ 
+ #Position Controllers --------------------------------
+left_act_joint_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: left_act_joint
+  pid: {p: 20.0, i: 0.0, d: 0.1}
+# mimic joint1
+#rocker_left_joint:
+#  p: 3.0
+#  i: 0.0
+#  d: 1.0
+#  i_clamp: 0.2
+#  antiwindup: false
+#  publish_state: true
+#crank_left_joint:
+#  p: 3.0
+#  i: 0.0
+#  d: 1.0
+#  i_clamp: 0.2
+#  antiwindup: false
+#  publish_state: true
+  
+  

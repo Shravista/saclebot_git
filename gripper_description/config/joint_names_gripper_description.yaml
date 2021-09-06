@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'left_act_joint', 'rocker_left_joint', 'right_joint_act', 'rocker_right_joint', 'crank_left_joint', 'crank_right_joint', ]

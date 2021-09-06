@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="paused" value="false" />
+    </include>
+    
+	<!-- urdf spawner-->
+	<arg name="x" value="0.0" />
+    <arg name="y" value="0.0" />
+    <arg name="z" value="0.06" />
+    <arg name="urdf_robot_file" value="$(find gripper_description)/urdf/gripper_description.urdf"/>
+	<param name="robot_description" command="cat $(arg urdf_robot_file)" />
+	
+	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    args="-urdf -x $(arg x) -y $(arg y) -z $(arg z)  -model gripper -param robot_description"/>
+    
+    <!-- controller-->
+    <rosparam file="$(find gripper_description)/config/gripper_controller.yaml" command="load" />
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" args="joint_state_controller left_act_joint_position_controller">
+    </node>
+    
+    
+    <!-- tf-->
+    
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen" >
+    </node>
+</launch>

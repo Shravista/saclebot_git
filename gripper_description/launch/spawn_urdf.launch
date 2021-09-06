@@ -1,0 +1,10 @@
+<?xml version = "1.0" encoding="UTF-8" ?>
+<launch>
+	<arg name="x" value="0.0" />
+    <arg name="y" value="0.0" />
+    <arg name="z" value="0.05143" />
+    <arg name="urdf_robot_file" value="$(find stackbot_description)/urdf/stackbot_description.urdf"/>
+	<param name="robot_description" command="cat $(arg urdf_robot_file)" />
+	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    args="-urdf -x $(arg x) -y $(arg y) -z $(arg z)  -model stackBot -param robot_description"/>
+</launch>
