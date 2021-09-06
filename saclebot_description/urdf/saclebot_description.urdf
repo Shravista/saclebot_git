@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- URDF FILE GENERATED USING SOLIDWORKS TO URDF PLUGIN-->
+<!-- MAINTAINER OF THESE FILES - SaCleBot Team - DIAT-->
+<!-- Note to the reader for the effective simulation masses of all links are made to reduce by half -->
+<robot name="saclebot">
+                                        <!-- SaCleBot Main Assembly - Base link -->
+  <link name="base_footprint"/>
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0.2575" rpy="0 0 0"/>
+  </joint>
+  <link name="base_link"> <!-- 2 -->
+    <inertial>
+      <origin xyz="0.0030962 -0.0067056 -0.034909" rpy="0 0 0" />
+      <mass value="4.57525" />
+      <inertia ixx="0.053635" ixy="1.4367E-08" ixz="-0.73790E-09" iyy="0.063745" iyz="-0.075785E-09" izz="0.0111315" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+                                        <!-- SaCleBot Main Assembly -  manipulator base -->
+  <link name="base_manipulator">
+    <inertial>
+      <origin xyz="3.6943E-05 -0.00021046 -0.054473" rpy="0 0 0" />
+      <mass value="1.0364" />
+      <inertia ixx="0.0025042" ixy="-0.97525E-06" ixz="-3.9547E-08" iyy="0.00250305" iyz="-0.7373E-07" izz="0.0039533" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/base_manipulator.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.90196 0.92157 0.92157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/base_manipulator.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_manipulator_joint" type="fixed">
+    <origin xyz="-0.1 -0.0074 -0.041" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="base_manipulator" />
+    <axis xyz="0 0 0" />
+  </joint>
+  
+                                    <!-- SaCleBot Main Assembly - Shoulder Link-->
+  <link name="shoulder_link">
+    <inertial>
+      <origin xyz="0.002613 0.0018963 0.57866" rpy="0 0 0" />
+      <mass value="0.6828" />
+      <inertia ixx="0.072905" ixy="-1.37205E-08" ixz="2.27745E-07" iyy="0.072845" iyz="1.49155E-07" izz="0.00036781" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/shoulder_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.90196 0.92157 0.92157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="shoulder_joint" type="revolute"> 
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_manipulator" />
+    <child link="shoulder_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="6.28" effort="10" velocity="2" />
+  </joint>
+<!--                     SaCleBot Main Assembly -                       camera head link                                          - intel real sense D345i-->
+  <link name="camera_head_link">
+    <inertial>
+      <origin xyz="0.0266863314036889 2.22044604925031E-16 0.000112026493455208" rpy="0 0 0" />
+      <mass value="0.0433695887950867" />
+      <inertia ixx="0.000069700655463012" ixy="0.5986431190837E-19" ixz="1.195109891439365E-07" iyy="0.0000663023916539915" iyz="0.614128674868065E-18" izz="1.146724713408645E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/camera_head_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/camera_head_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="camera_head_joint" type="revolute"> 
+    <origin xyz="0.0475 0.036858 1.2585" rpy="1.5708 0 0" /> <!-- rpy 1.5708-->
+    <parent link="shoulder_link" />
+    <child link="camera_head_link" />
+    <axis xyz="0 0 -1" /> <!-- axis -1-->
+    <limit
+      lower="0"
+      upper="1.5708"
+      effort="1"
+      velocity="1" />
+  </joint>
+  <!-- camera_link-->
+  <link name="camera_screw_frame"/>
+  <link name="realsense2_link">
+    <inertial>
+      <origin xyz="0.00162770944218829 0.00168231639481042 2.480462200527E-06" rpy="0 0 0" />
+      <mass value="0.01909558623080485" />
+      <inertia ixx="1.17868705512875E-05" ixy="2.255621114487075E-08" ixz="-0.65062788929991E-08" iyy="1.055844144648745E-06" iyz="-4.011940674203395E-09" izz="1.112855399590245E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/camera_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/camera_link.dae" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="camera_screw_joint" type="fixed">
+    <origin xyz="0.041 0 0" rpy = "-1.57079632679491 0 0"/>
+    <parent link="camera_head_link"/>
+    <child link="camera_screw_frame"/>
+  </joint>
+  
+  <joint name="camera_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="camera_screw_frame" />
+    <child link="realsense2_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  
+  <link name="realsense2_depth_frame" />
+  
+  <joint name="realsense2_depth_joint" type="fixed">
+    <origin xyz="0 0.0175 0" rpy="0 0 0"/>
+    <parent link="realsense2_link"/>
+    <child link="realsense2_depth_frame"/>
+  </joint>
+  
+  <link name="realsense2_depth_optical_frame" />
+  
+  <joint name="realsense2_depth_optical_joint" type="fixed">
+   <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
+   <parent link="realsense2_depth_frame"/>
+   <child link="realsense2_depth_optical_frame"/>
+  </joint>
+  
+  <link name="realsense2_left_ir_frame"/>
+  
+  <joint name="realsense2_left_ir_joint" type ="fixed">
+    <origin xyz = "0 0 0" rpy = "0 0 0"/>
+    <parent link="realsense2_depth_frame"/>
+    <child link="realsense2_left_ir_frame"/>
+  </joint>
+  
+  <link name="realsense2_left_ir_optical_frame"/>
+  
+  <joint name="realsense2_left_ir_optical_joint" type ="fixed">
+    <origin xyz = "0 0 0" rpy = "-1.5708 0 -1.5708"/>
+    <parent link="realsense2_left_ir_frame"/>
+    <child link="realsense2_left_ir_optical_frame"/>
+  </joint>
+  
+  <link name="realsense2_right_ir_frame"/>
+  
+  <joint name="realsense2_right_ir_joint" type ="fixed">
+    <origin xyz = "0 -0.050 0" rpy = "0 0 0"/>
+    <parent link="realsense2_depth_frame"/>
+    <child link="realsense2_right_ir_frame"/>
+  </joint>
+  
+  <link name="realsense2_right_ir_optical_frame"/>
+  
+  <joint name="realsense2_right_ir_optical_joint" type ="fixed">
+    <origin xyz = "0 0 0" rpy = "-1.5708 0 -1.5708"/>
+    <parent link="realsense2_right_ir_frame"/>
+    <child link="realsense2_right_ir_optical_frame"/>
+  </joint>
+  
+  <link name="realsense2_rgb_frame"/>
+  
+  <joint name="realsense2_rgb_joint" type ="fixed">
+    <origin xyz = "0 0.015 0" rpy = "0 0 0"/>
+    <parent link="realsense2_depth_frame"/>
+    <child link="realsense2_rgb_frame"/>
+  </joint>
+  
+  <link name="realsense2_rgb_optical_frame"/>
+  
+  <joint name="realsense2_rgb_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy = "-1.5708 0 -1.5708"/>
+    <parent link = "realsense2_rgb_frame"/>
+    <child link = "realsense2_rgb_optical_frame"/>
+  </joint>
+ 
+  <link name="realsense2_imu_frame"/>
+  <joint name="realsense2_imu_joint" type="fixed">
+    <origin xyz="0 0 0" rpy = "0 0 0"/>
+    <parent link="realsense2_link"/>
+    <child link="realsense2_imu_frame"/>
+  </joint>
+                                            <!-- SaCleBot Main Assembly - slider link -->
+  <link name="slider_link">
+    <inertial>
+      <origin xyz="0.14315 -0.0088076 -9.8295E-07" rpy="0 0 0" /> 
+      <mass value="0.244485" />
+      <inertia ixx="0.000240945" ixy="-1.1776E-07" ixz="2.6165E-09" iyy="0.00079195" iyz="2.2041E-09" izz="0.000924" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/slider_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/slider_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="slider_joint" type="prismatic">
+    <origin xyz="0 0.0015673 0.22" rpy="0 0 0" />
+    <parent link="shoulder_link" />
+    <child link="slider_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="0.0" upper="1.21" effort="10" velocity="1" />
+  </joint>
+                                                <!-- SaCleBot Main Assembly -  R1 link-->
+  <link name="R1_link">
+    <inertial>
+      <origin xyz="9.7543E-05 0.15822 -2.0845E-06" rpy="0 0 0" />
+      <mass value="0.11529" />
+      <inertia ixx="0.00022596" ixy="-1.2775E-07" ixz="-2.61655E-09" iyy="3.0361E-05" iyz="-2.2041E-09" izz="0.00021947" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/R1_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/R1_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R1_joint" type="revolute">
+    <origin xyz="0.3955 -0.0015673 0" rpy="-1.5708 0 0" />
+    <parent link="slider_link" />
+    <child link="R1_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.1416" upper="0" effort="15" velocity="10" />
+  </joint>
+<!--                SaCleBot Main Assembly -                                                R2 link                                                     -->
+  <link name="R2_link">
+    <inertial>
+      <origin xyz="0.038942 -0.00027273 -5.8282E-06" rpy="0 0 0" />
+      <mass value="0.041234" />
+      <inertia ixx="0.9521E-05" ixy="1.2775E-07" ixz="-2.2041E-09" iyy="1.35025E-05" iyz="2.61655E-09" izz="2.2002E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/R2_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75 0.75 0.75 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/R2_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R2_joint" type="revolute"> 
+    <origin xyz="0 0.276 0" rpy="1.5708 0 1.5708" />
+    <parent link="R1_link" />
+    <child link="R2_link" />
+    <axis xyz="0 0 -1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="5"
+      velocity="5" />
+  </joint>
+<!--                        SaCleBot Main Assembly -                                     R3 - link-->
+  <link name="R3_link">
+    <inertial>
+      <origin xyz="0.13127 -1.2768E-15 2.8866E-15" rpy="0 0 0" />
+      <mass value="0.091215" />
+      <inertia ixx="2.80165E-05" ixy="0.5051E-19" ixz="4.4224E-20" iyy="0.000211185" iyz="-0.85295E-20" izz="0.000207805" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/R3_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/R3_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="R3_joint" type="revolute"> 
+    <origin xyz="0.06 0 0" rpy="1.5708 -1.5708 0" />
+    <parent link="R2_link" />
+    <child link="R3_link" />
+    <axis xyz="0 0 -1" /> <!-- axis 00-1-->
+    <limit
+      lower="-1.5708"
+      upper="3.1416"
+      effort="2"
+      velocity="2" />
+  </joint>
+  <!--                                      SaCleBot Main Assembly                  -       Gripper -->
+  <link name="gripper_base_link">
+    <inertial>
+      <origin xyz="0.00070517 -0.00079249 -0.039763" rpy="0 0 0" />
+      <mass value="0.0667" />
+      <inertia ixx="1.4344E-05" ixy="-2.2473E-08" ixz="-1.81605E-07" iyy="2.4466E-05" iyz="-2.02345E-08" izz="1.60365E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/gripper_base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.90196 0.92157 0.92157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/gripper_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="gripper_joint" type="fixed">
+    <origin xyz="0.302 0 0" rpy="0 1.5708 0" />
+    <parent link="R3_link" />
+    <child link="gripper_base_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <link name="left_actuator">
+    <inertial>
+      <origin xyz="0.03452 -2.9837E-16 0.0013795" rpy="0 0 0" />
+      <mass value="0.006526" />
+      <inertia ixx="0.57745E-06" ixy="-1.78225E-22" ixz="-1.6909E-21" iyy="1.5598E-06" iyz="1.70975E-22" izz="1.0792E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/left_actuator.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/left_actuator.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_act_joint" type="revolute">
+    <origin xyz="0.01 0 -0.02" rpy="-1.5708 -1.5708 0" />
+    <parent link="gripper_base_link" />
+    <child link="left_actuator" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="1.5708" effort="1" velocity="1" />
+  </joint>
+  <link name="rocker_left_link">
+    <inertial>
+      <origin xyz="-0.00076233 0.021677 3.747E-16" rpy="0 0 0" />
+      <mass value="0.014043" />
+      <inertia ixx="0.8085E-05" ixy="-1.08575E-06" ixz="2.5182E-22" iyy="1.0719E-06" iyz="1.8019E-21" izz="0.82295E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/rocker_left_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.95 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/rocker_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rocker_left_joint" type="revolute">
+    <origin xyz="0.055 0 0" rpy="0 0 -1.5708" />
+    <parent link="left_actuator" />
+    <child link="rocker_left_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.1415926" upper="3.1415926" effort="1" velocity="1" />
+    <mimic joint="left_act_joint" multiplier="-1" offset="0" />
+  </joint>
+  <link name="right_actuator">
+    <inertial>
+      <origin xyz="0.033438 -2.8927E-16 0.0010856" rpy="0 0 0" />
+      <mass value="0.006737" />
+      <inertia ixx="0.67005E-06" ixy="-3.15845E-21" ixz="-1.79165E-21" iyy="1.6524E-06" iyz="0.5811E-21" izz="1.07965E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/right_actuator.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/right_actuator.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_act_joint" type="revolute">
+    <origin xyz="-0.01 0 -0.02" rpy="-1.5708 -1.5708 0" />
+    <parent link="gripper_base_link" />
+    <child link="right_actuator" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.5708" upper="0" effort="1" velocity="1" />    <mimic joint="left_act_joint" multiplier="-1" offset="0" />
+  </joint>
+  <link name="rocker_right_link">
+    <inertial>
+      <origin xyz="-0.00076233 -0.021677 -8.3267E-17" rpy="0 0 0" />
+      <mass value="0.014043"/>
+      <inertia ixx="0.8085E-05" ixy="-1.08575E-06" ixz="2.5182E-22" iyy="1.0719E-06" iyz="1.8019E-21" izz="0.82295E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/rocker_right_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.95 0.25 0.25 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/rocker_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rocker_right_joint" type="revolute">
+    <origin xyz="0.055 0 0" rpy="0 0 1.5708" />
+    <parent link="right_actuator" />
+    <child link="rocker_right_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.1415926" upper="3.1415926" effort="1" velocity="1" />
+    <mimic joint="right_act_joint" multiplier="-1" offset="0" />
+  </joint>
+  <link name="crank_left_link">
+    <inertial>
+      <origin xyz="0.0275 6.9389E-18 -0.00030296" rpy="0 0 0" />
+      <mass value="0.008192" />
+      <inertia ixx="1.0728E-06" ixy="-1.86615E-22" ixz="0.9102E-22" iyy="2.05515E-06" iyz="2.4703E-25" izz="1.0463E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/crank_left_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/crank_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="crank_left_joint" type="revolute">
+    <origin xyz="0.022 0 -0.035" rpy="1.5708 -1.5708 0" />
+    <parent link="gripper_base_link" />
+    <child link="crank_left_link" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-3.1415926" upper="3.1415926" effort="1.0" velocity="1.0" />
+    <mimic joint="left_act_joint" multiplier="1" offset="0" />
+  </joint>
+  <link name="crank_right_link">
+    <inertial>
+      <origin xyz="0.0275 5.2042E-18 -0.00030296" rpy="0 0 0" />
+      <mass value="0.008192" />
+      <inertia ixx="1.0728E-06" ixy="-1.86615E-22" ixz="0.9102E-22" iyy="2.05515E-06" iyz="2.4703E-25" izz="1.0463E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://gripper_description/meshes/crank_right_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/crank_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="crank_right_joint" type="revolute">
+    <origin xyz="-0.022 0 -0.035" rpy="1.5708 -1.5708 0" />
+    <parent link="gripper_base_link" />
+    <child link="crank_right_link" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-3.1415926" upper="3.1415926" effort="1" velocity="1" />
+    <mimic joint="left_act_joint" multiplier="-1" offset="0" />
+  </joint>
+  <!--                              SaCleBot Main Assembly                  imu link                    -->
+  <link name="nxp_imu_link"> <!-- neglected for reduction -->
+    <inertial>
+      <origin xyz="-9.29811783123569E-16 -1.22124532708767E-15 0.0015" rpy="0 0 0" />
+      <mass value="0.00167768920715673" />
+      <inertia ixx="5.77688933946281E-08" ixy="-2.42338070084007E-24" ixz="2.16074504319118E-24" iyy="1.0795187605053E-07" iyz="-5.63644326339606E-22" izz="1.63204235634423E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/nxp_imu_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/nxp_imu_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="nxp_imu_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="nxp_imu_link" />
+  </joint>
+  <!-- RP-LiDAR A3M1 -->
+  <link name="RP_LiDAR_A3M1_link"> <!-- neglected for reduction -->
+    <inertial>
+      <origin xyz="0.0017336 -0.00015015 -0.012532" rpy="0 0 0" />
+      <mass value="0.0466" />
+      <inertia ixx="1.9742E-05" ixy="3.5144E-07" ixz="5.369E-08" iyy="1.5765E-05" iyz="8.0776E-08" izz="3.3885E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/RP_LiDAR_A3M1_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/RP_LiDAR_A3M1_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RP_LiDAR_A3M1_joint" type="fixed">
+    <origin xyz="0.15749 -0.0096 0.126" rpy="0 0 -3.1416" />
+    <parent link="base_link" />
+    <child link="RP_LiDAR_A3M1_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <!-- mop link-->
+  <link name="mop_link">
+    <inertial>
+      <origin xyz="-1.3878E-17 5.5511E-17 0.073689" rpy="0 0 0" />
+      <mass value="0.34816" />
+      <inertia ixx="0.00135195" ixy="-1.4359E-07" ixz="-0.52145E-18" iyy="0.00134805" iyz="-1.80635E-19" izz="0.00258675" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/mop_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/mop_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="mop_joint" type="continuous">
+    <origin xyz="0 -0.0074 -0.13" rpy="-3.1416 0 0" />
+    <parent link="base_link" />
+    <child link="mop_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <!-- front right wheel -->
+  <link name="frontRightWheel_link">
+    <inertial>
+      <origin xyz="-5.3092E-08 3.5546E-07 -0.0080247" rpy="0 0 0" />
+      <mass value="0.28362" />
+      <inertia ixx="0.000077795" ixy="-0.98815E-10" ixz="2.6807E-10" iyy="0.000077795" iyz="4.08805E-11" izz="0.000116385" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/frontRightWheel_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/frontRightWheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="frontRightWheel_joint" type="continuous">
+    <origin xyz="0.2 -0.23554 -0.2075" rpy="1.5708 0 0" />
+    <parent link="base_link" />
+    <child link="frontRightWheel_link" />
+    <axis xyz="0 0 -1" />
+  </joint>
+  <!-- rear right wheel-->
+  <link name="rearRightWheel_link">
+    <inertial>
+      <origin xyz="-1.1869E-07 1.9139E-07 -0.0080203" rpy="0 0 0" />
+      <mass value="0.28362" />
+      <inertia ixx="0.000077795" ixy="-0.98815E-10" ixz="2.6807E-10" iyy="0.000077795" iyz="4.08805E-11" izz="0.000116385" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/rearRightWheel_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/rearRightWheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rearRightWheel_joint" type="continuous">
+    <origin xyz="-0.2 -0.23554 -0.2075" rpy="1.5708 0 0" />
+    <parent link="base_link" />
+    <child link="rearRightWheel_link" />
+    <axis xyz="0 0 -1" />
+  </joint>
+  <!-- front left wheel -->
+  <link name="frontLeftWheel_link">
+    <inertial>
+      <origin xyz="5.8442E-08 -2.1845E-07 -0.0080203" rpy="0 0 0" />
+      <mass value="0.28362" />
+      <inertia ixx="0.000077795" ixy="-0.98815E-10" ixz="2.6807E-10" iyy="0.000077795" iyz="4.08805E-11" izz="0.000116385" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/frontLeftWheel_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/frontLeftWheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="frontLeftWheel_joint" type="continuous">
+    <origin xyz="0.2 0.22074 -0.2075" rpy="-1.5708 0 0" />
+    <parent link="base_link" />
+    <child link="frontLeftWheel_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <!-- rear left wheel -->
+  <link name="rearLeftWheel_link">
+    <inertial>
+      <origin xyz="-3.3704E-07 1.1934E-07 -0.0080247" rpy="0 0 0" />
+      <mass value="0.28362" />
+      <inertia ixx="0.000077795" ixy="-0.98815E-10" ixz="2.6807E-10" iyy="0.000077795" iyz="4.08805E-11" izz="0.000116385" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/rearLeftWheel_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://saclebot_description/meshes/rearLeftWheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rearLeftWheel_joint" type="continuous">
+    <origin xyz="-0.2 0.22074 -0.2075" rpy="-1.5708 0 0" />
+    <parent link="base_link" />
+    <child link="rearLeftWheel_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+  
+  <!-- Gazebo elements-->
+  
+  <gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
+  </gazebo>
+  <!-- gazebo references for links-->
+  <gazebo reference="left_actuator">
+    <kp>10000.0</kp>
+    <kd>1000.0</kd>
+  	<mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+  <gazebo reference="crank_left_link">
+    <kp>10000.0</kp>
+    <kd>1000.0</kd>
+  	<mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+  <gazebo reference="rocker_left_link">
+    <kp>10000.0</kp>
+    <kd>1000.0</kd>
+  	<mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <gazebo reference="right_actuator">
+    <kp>10000.0</kp>
+    <kd>1000.0</kd>
+  	<mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+  <gazebo reference="crank_right_link">
+    <kp>10000.0</kp>
+    <kd>1000.0</kd>
+  	<mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+  <gazebo reference="rocker_right_link">
+    <kp>10000.0</kp>
+    <kd>1000.0</kd>
+  	<mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <gazebo reference="shoulder_link">
+    <kp>10000.0</kp>
+    <kd>1000.0</kd>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>  
+  <gazebo reference="slider_link">
+    <kp>10000.0</kp>
+    <kd>1000.0</kd>
+  	<mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <material>Gazebo/Red</material>
+  </gazebo>
+  
+  <!-- Gazebo sensor links-->
+  <gazebo reference="nxp_imu_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>imu</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>nxp_imu_link</bodyName>
+        <updateRateHZ>100.0</updateRateHZ>
+        <gaussianNoise>0.05</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>nxp_imu_link</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+  
+  <gazebo reference="realsense2_imu_frame">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor_realsense" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>realsense2/imu</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>realsense2/imu</topicName>
+        <bodyName>realsense2_imu_frame</bodyName>
+        <updateRateHZ>100.0</updateRateHZ>
+        <gaussianNoise>0.05</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>realsense2_imu_frame</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+  
+  <gazebo reference="realsense2_link">
+    <self_collide>0</self_collide>
+    <enable_wind>0</enable_wind>
+    <kinematic>0</kinematic>
+    <gravity>1</gravity>
+    <mu2>1</mu2>
+    <fdir1>0 0 0</fdir1>
+    <kp>1e+13</kp>
+    <kd>1</kd>
+    <sensor name="realsense2_color" type="camera">
+        <camera name="realsense2">
+            <horizontal_fov>1.211258501</horizontal_fov>
+            <image>
+                <width>1920</width>
+                <height>1080</height>
+                <format>RGB_INT8</format>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>1000</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.007</stddev>
+            </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>50</update_rate>
+        <visualize>0</visualize>
+    </sensor>
+    <sensor name="realsense2_ired1" type="camera">
+        <camera name="realsense2">
+            <horizontal_fov>1.487020523</horizontal_fov>
+            <image>
+                <width>1280</width>
+                <height>720</height>
+                <format>L_INT8</format>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>1000.0</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.05</stddev>
+            </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>100</update_rate>
+        <visualize>0</visualize>
+    </sensor>
+    <sensor name="realsense2_ired2" type="camera">
+        <camera name="realsense2">
+            <horizontal_fov>1.487020523</horizontal_fov>
+            <image> 
+                <width>1280</width>
+                <height>720</height>
+                <format>L_INT8</format>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>1000.0</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.05</stddev>
+            </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>100</update_rate>
+        <visualize>0</visualize>
+    </sensor>
+    <sensor name="realsense2_depth" type="depth">
+        <camera name="realsense2">
+            <horizontal_fov>1.487020523</horizontal_fov>
+            <image> 
+                <width>1280</width>
+                <height>720</height>
+                <format>L_INT8</format>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>1000.0</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.100</stddev>
+            </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>100</update_rate>
+        <visualize>0</visualize>
+        <plugin name="kinect_controller" filename="libgazebo_ros_openni_kinect.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>10.0</updateRate>
+            <cameraName>realsense2_d435i</cameraName>
+            <frameName>realsense2_depth_optical_frame</frameName>
+            <imageTopicName>rgb/image_raw</imageTopicName>
+            <depthImageTopicName>depth/image_raw</depthImageTopicName>
+            <pointCloudTopicName>depth/points</pointCloudTopicName>
+            <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+            <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+            <pointCloudCutoff>0.4</pointCloudCutoff>
+            <hackBaseline>0.07</hackBaseline>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+            <CxPrime>0.0</CxPrime>
+            <Cx>0.0</Cx>
+            <Cy>0.0</Cy>
+            <focalLength>0.0</focalLength>
+        </plugin>
+    </sensor>  
+  </gazebo>
+  <gazebo>
+    <plugin name="meccanum_ros_force_based_move" filename="librobot_force_based_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>25.0</odometryRate>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <cmdVelTimeOut>0.25</cmdVelTimeOut>
+      <publishOdometryTf>1</publishOdometryTf>
+      <yaw_velocity_p_gain>1.0</yaw_velocity_p_gain>
+      <x_velocity_p_gain>15.0</x_velocity_p_gain>
+      <y_velocity_p_gain>15.0</y_velocity_p_gain>
+      <max_x_velocity>0.6</max_x_velocity>
+      <max_y_velocity>0.6</max_y_velocity>
+      <max_yaw_velocity>0.5</max_yaw_velocity>
+    </plugin>
+  </gazebo>
+  
+        
+        
+  <gazebo reference="RP_LiDAR_A3M1_link">
+    <sensor type="ray" name="head_rplidar_sensor">
+      <pose>0 0 0.06 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159265</min_angle>
+            <max_angle>3.14159265</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.2</min>
+          <max>25.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_rplidar_controller" filename="libgazebo_ros_laser.so">
+        <topicName>scan</topicName>
+        <frameName>RP_LiDAR_A3M1_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+  
+  <transmission name="trans1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="frontRightWheel_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission>
+  
+  <transmission name="trans2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="frontLeftWheel_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission>
+  
+  <transmission name="trans3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rearRightWheel_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission>
+  
+  <transmission name="trans4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rearLeftWheel_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor4">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission>
+  
+  <transmission name="trans5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="shoulder_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor5">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission>
+  
+  <transmission name="trans6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="slider_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor6">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission>-
+  
+  <transmission name="trans7">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="R1_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor7">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission>
+  
+  <transmission name="trans8">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="R2_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor8">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission>
+  
+  <transmission name="trans9">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="R3_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor9">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission>
+  
+  <transmission name="trans10">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="left_act_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor10">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission>
+  
+  <transmission name="trans11">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="camera_head_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor11">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission>
+  
+  <transmission name="trans12">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="mop_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="motor12">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+  </transmission>
+  
+  <gazebo>
+  	<plugin name="rocker_left_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
+  		<joint> left_act_joint</joint>
+  		<mimicJoint>rocker_left_joint</mimicJoint>
+  		<multiplier>-1.0</multiplier>
+  		<offset>0.0</offset>
+  	</plugin>
+  </gazebo>
+  <gazebo>
+  	<plugin name="right_act_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
+  		<joint> left_act_joint</joint>
+  		<mimicJoint>right_act_joint</mimicJoint>
+  		<multiplier>-1.0</multiplier>
+  		<offset>0.0</offset>
+  	</plugin>
+  </gazebo>
+  <gazebo>
+  	<plugin name="rocker_right_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
+  		<joint> right_act_joint</joint>
+  		<mimicJoint>rocker_right_joint</mimicJoint>
+  		<multiplier>-1.0</multiplier>
+  		<offset>0.0</offset>
+  	</plugin>
+  </gazebo>
+  <gazebo>
+  	<plugin name="crank_left_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
+  		<joint> left_act_joint</joint>
+  		<mimicJoint>crank_left_joint</mimicJoint>
+  		<multiplier>1.0</multiplier>
+  		<offset>0.0</offset>
+  	</plugin>
+  </gazebo>
+  <gazebo>
+  	<plugin name="crank_right_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">
+  		<joint> left_act_joint</joint>
+  		<mimicJoint>crank_right_joint</mimicJoint>
+  		<multiplier>-1.0</multiplier>
+  		<offset>0.0</offset>
+  	</plugin>
+  </gazebo>
+</robot>

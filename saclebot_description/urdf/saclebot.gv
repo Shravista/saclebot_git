@@ -1,0 +1,104 @@
+digraph G {
+node [shape=box];
+"base_footprint" [label="base_footprint"];
+"base_link" [label="base_link"];
+"RP_LiDAR_A3M1_link" [label="RP_LiDAR_A3M1_link"];
+"base_manipulator" [label="base_manipulator"];
+"shoulder_link" [label="shoulder_link"];
+"camera_head_link" [label="camera_head_link"];
+"camera_screw_frame" [label="camera_screw_frame"];
+"realsense2_link" [label="realsense2_link"];
+"realsense2_depth_frame" [label="realsense2_depth_frame"];
+"realsense2_depth_optical_frame" [label="realsense2_depth_optical_frame"];
+"realsense2_left_ir_frame" [label="realsense2_left_ir_frame"];
+"realsense2_left_ir_optical_frame" [label="realsense2_left_ir_optical_frame"];
+"realsense2_rgb_frame" [label="realsense2_rgb_frame"];
+"realsense2_rgb_optical_frame" [label="realsense2_rgb_optical_frame"];
+"realsense2_right_ir_frame" [label="realsense2_right_ir_frame"];
+"realsense2_right_ir_optical_frame" [label="realsense2_right_ir_optical_frame"];
+"realsense2_imu_frame" [label="realsense2_imu_frame"];
+"slider_link" [label="slider_link"];
+"R1_link" [label="R1_link"];
+"R2_link" [label="R2_link"];
+"R3_link" [label="R3_link"];
+"gripper_base_link" [label="gripper_base_link"];
+"crank_left_link" [label="crank_left_link"];
+"crank_right_link" [label="crank_right_link"];
+"left_actuator" [label="left_actuator"];
+"rocker_left_link" [label="rocker_left_link"];
+"right_actuator" [label="right_actuator"];
+"rocker_right_link" [label="rocker_right_link"];
+"frontLeftWheel_link" [label="frontLeftWheel_link"];
+"frontRightWheel_link" [label="frontRightWheel_link"];
+"mop_link" [label="mop_link"];
+"nxp_imu_link" [label="nxp_imu_link"];
+"rearLeftWheel_link" [label="rearLeftWheel_link"];
+"rearRightWheel_link" [label="rearRightWheel_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_footprint" -> "base_joint" [label="xyz: 0 0 0.2575 \nrpy: 0 -0 0"]
+"base_joint" -> "base_link"
+"base_link" -> "RP_LiDAR_A3M1_joint" [label="xyz: 0.15749 -0.0096 0.126 \nrpy: 0 0 3.14159"]
+"RP_LiDAR_A3M1_joint" -> "RP_LiDAR_A3M1_link"
+"base_link" -> "base_manipulator_joint" [label="xyz: -0.1 -0.0074 -0.041 \nrpy: 0 -0 0"]
+"base_manipulator_joint" -> "base_manipulator"
+"base_manipulator" -> "shoulder_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"shoulder_joint" -> "shoulder_link"
+"shoulder_link" -> "camera_head_joint" [label="xyz: 0.0475 0.036858 1.2585 \nrpy: 1.5708 -0 0"]
+"camera_head_joint" -> "camera_head_link"
+"camera_head_link" -> "camera_screw_joint" [label="xyz: 0.041 0 0 \nrpy: -1.5708 0 0"]
+"camera_screw_joint" -> "camera_screw_frame"
+"camera_screw_frame" -> "camera_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"camera_joint" -> "realsense2_link"
+"realsense2_link" -> "realsense2_depth_joint" [label="xyz: 0 0.0175 0 \nrpy: 0 -0 0"]
+"realsense2_depth_joint" -> "realsense2_depth_frame"
+"realsense2_depth_frame" -> "realsense2_depth_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.5708 -0 -1.5708"]
+"realsense2_depth_optical_joint" -> "realsense2_depth_optical_frame"
+"realsense2_depth_frame" -> "realsense2_left_ir_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"realsense2_left_ir_joint" -> "realsense2_left_ir_frame"
+"realsense2_left_ir_frame" -> "realsense2_left_ir_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.5708 -0 -1.5708"]
+"realsense2_left_ir_optical_joint" -> "realsense2_left_ir_optical_frame"
+"realsense2_depth_frame" -> "realsense2_rgb_joint" [label="xyz: 0 0.015 0 \nrpy: 0 -0 0"]
+"realsense2_rgb_joint" -> "realsense2_rgb_frame"
+"realsense2_rgb_frame" -> "realsense2_rgb_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.5708 -0 -1.5708"]
+"realsense2_rgb_optical_joint" -> "realsense2_rgb_optical_frame"
+"realsense2_depth_frame" -> "realsense2_right_ir_joint" [label="xyz: 0 -0.05 0 \nrpy: 0 -0 0"]
+"realsense2_right_ir_joint" -> "realsense2_right_ir_frame"
+"realsense2_right_ir_frame" -> "realsense2_right_ir_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.5708 -0 -1.5708"]
+"realsense2_right_ir_optical_joint" -> "realsense2_right_ir_optical_frame"
+"realsense2_link" -> "realsense2_imu_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"realsense2_imu_joint" -> "realsense2_imu_frame"
+"shoulder_link" -> "slider_joint" [label="xyz: 0 0.0015673 0.22 \nrpy: 0 -0 0"]
+"slider_joint" -> "slider_link"
+"slider_link" -> "R1_joint" [label="xyz: 0.3955 -0.0015673 0 \nrpy: -1.5708 0 0"]
+"R1_joint" -> "R1_link"
+"R1_link" -> "R2_joint" [label="xyz: 0 0.276 0 \nrpy: 1.5708 -0 1.5708"]
+"R2_joint" -> "R2_link"
+"R2_link" -> "R3_joint" [label="xyz: 0.06 0 0 \nrpy: 0 -1.5708 -1.5708"]
+"R3_joint" -> "R3_link"
+"R3_link" -> "gripper_joint" [label="xyz: 0.302 0 0 \nrpy: 0 1.5708 -0"]
+"gripper_joint" -> "gripper_base_link"
+"gripper_base_link" -> "crank_left_joint" [label="xyz: 0.022 0 -0.035 \nrpy: 0 -1.5708 1.5708"]
+"crank_left_joint" -> "crank_left_link"
+"gripper_base_link" -> "crank_right_joint" [label="xyz: -0.022 0 -0.035 \nrpy: 0 -1.5708 1.5708"]
+"crank_right_joint" -> "crank_right_link"
+"gripper_base_link" -> "left_act_joint" [label="xyz: 0.01 0 -0.02 \nrpy: 0 -1.5708 -1.5708"]
+"left_act_joint" -> "left_actuator"
+"left_actuator" -> "rocker_left_joint" [label="xyz: 0.055 0 0 \nrpy: 0 0 -1.5708"]
+"rocker_left_joint" -> "rocker_left_link"
+"gripper_base_link" -> "right_act_joint" [label="xyz: -0.01 0 -0.02 \nrpy: 0 -1.5708 -1.5708"]
+"right_act_joint" -> "right_actuator"
+"right_actuator" -> "rocker_right_joint" [label="xyz: 0.055 0 0 \nrpy: 0 -0 1.5708"]
+"rocker_right_joint" -> "rocker_right_link"
+"base_link" -> "frontLeftWheel_joint" [label="xyz: 0.2 0.22074 -0.2075 \nrpy: -1.5708 0 0"]
+"frontLeftWheel_joint" -> "frontLeftWheel_link"
+"base_link" -> "frontRightWheel_joint" [label="xyz: 0.2 -0.23554 -0.2075 \nrpy: 1.5708 -0 0"]
+"frontRightWheel_joint" -> "frontRightWheel_link"
+"base_link" -> "mop_joint" [label="xyz: 0 -0.0074 -0.13 \nrpy: 3.14159 0 0"]
+"mop_joint" -> "mop_link"
+"base_link" -> "nxp_imu_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"nxp_imu_joint" -> "nxp_imu_link"
+"base_link" -> "rearLeftWheel_joint" [label="xyz: -0.2 0.22074 -0.2075 \nrpy: -1.5708 0 0"]
+"rearLeftWheel_joint" -> "rearLeftWheel_link"
+"base_link" -> "rearRightWheel_joint" [label="xyz: -0.2 -0.23554 -0.2075 \nrpy: 1.5708 -0 0"]
+"rearRightWheel_joint" -> "rearRightWheel_link"
+}
