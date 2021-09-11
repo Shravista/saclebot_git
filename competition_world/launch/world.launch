@@ -12,5 +12,6 @@
 	<rosparam file="$(find competition_world)/config/urdf_params.yaml" command="load" />
 	
 	<node name="saclebot_objects_urdf_spawner" pkg="competition_world" type="urdf_spawner.py" output="screen"/>
+	<node name="saclebot_spawn_request" pkg="competition_world" type="urdf_srvr_client.py" output="screen"/>
 	
 </launch>
