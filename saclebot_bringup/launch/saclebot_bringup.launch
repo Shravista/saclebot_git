@@ -2,4 +2,5 @@
 <launch>
     <include file = "$(find competition_world)/launch/world.launch"/>
     <include file = "$(find saclebot_description)/launch/saclebot_gazebo.launch"/>
+    <node name="saclebot_setting_home_states" pkg="saclebot_bringup" type="saclebot_home_state.py" output="screen"/>
 </launch>
