@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <node name="relocate_robot_trash" type="rqt_gui" pkg="rqt_gui" respawn = "false" output="screen" args="--perspective-file $(find saclebot_bringup)/config/Relocate_GUI.perspective"/>
+</launch>

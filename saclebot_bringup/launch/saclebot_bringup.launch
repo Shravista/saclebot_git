@@ -3,4 +3,7 @@
     <include file = "$(find competition_world)/launch/world.launch"/>
     <include file = "$(find saclebot_description)/launch/saclebot_gazebo.launch"/>
     <node name="saclebot_setting_home_states" pkg="saclebot_bringup" type="saclebot_home_state.py" output="screen"/>
+    
+    <!-- rqt_gui for the relocating the trash at beginning of each run -->
+    <node name="relocate_robot_trash" type="rqt_gui" pkg="rqt_gui" respawn = "false" output="screen" args="--perspective-file $(find saclebot_bringup)/config/Relocate_GUI.perspective"/>
 </launch>
