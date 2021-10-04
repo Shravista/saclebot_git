@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'shoulder_joint', 'camera_head_joint', 'slider_joint', 'R1_link', 'R2_joint', 'R3_joint', 'mop_joint', 'frontRightWheel_joint', 'rearRightWheel_joint', 'frontLeftWheel_joint', 'rearLeftWheel_joint', ]

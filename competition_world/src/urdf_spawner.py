@@ -78,8 +78,8 @@ class DynamicItemsLocation(object):
 
 if __name__ == "__main__":
     
-        i = DynamicItemsLocation()
-        rospy.spin()
+    i = DynamicItemsLocation()
+    rospy.spin()
     
 
 

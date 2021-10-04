@@ -1,0 +1,141 @@
+{
+  "keys": {},
+  "groups": {
+    "mainwindow": {
+      "keys": {
+        "geometry": {
+          "repr(QByteArray.hex)": "QtCore.QByteArray(b'01d9d0cb00030000000001020000015d0000068700000317000001020000018200000687000003170000000000000000078000000102000001820000068700000317')",
+          "type": "repr(QByteArray.hex)",
+          "pretty-print": "       ]                         "
+        },
+        "state": {
+          "repr(QByteArray.hex)": "QtCore.QByteArray(b'000000ff00000000fd0000000100000003000005860000016afc0100000004fb00000058007200710074005f007000750062006c00690073006800650072005f005f005000750062006c00690073006800650072005f005f0031005f005f005000750062006c006900730068006500720057006900640067006500740100000000000002c00000000000000000fb00000072007200710074005f0073006500720076006900630065005f00630061006c006c00650072005f005f005300650072007600690063006500430061006c006c00650072005f005f0031005f005f005300650072007600690063006500430061006c006c006500720057006900640067006500740100000000000002c0000002c000fffffffb00000042007200710074005f007300720076005f005f00530065007200760069006300650073005f005f0031005f005f006d0065007300730061006700650073002e007500690100000332000002540000000000000000fb00000072007200710074005f0073006500720076006900630065005f00630061006c006c00650072005f005f005300650072007600690063006500430061006c006c00650072005f005f0032005f005f005300650072007600690063006500430061006c006c0065007200570069006400670065007401000002c6000002c0000002c000ffffff000005860000000000000004000000040000000800000008fc00000001000000030000000100000036004d0069006e0069006d0069007a006500640044006f0063006b00570069006400670065007400730054006f006f006c0062006100720000000000ffffffff0000000000000000')",
+          "type": "repr(QByteArray.hex)",
+          "pretty-print": "                 Xrqt_publisher__Publisher__1__PublisherWidget          rrqt_service_caller__ServiceCaller__1__ServiceCallerWidget          Brqt_srv__Services__1__messages.ui          rrqt_service_caller__ServiceCaller__2__ServiceCallerWidget                            6MinimizedDockWidgetsToolbar        "
+        }
+      },
+      "groups": {
+        "toolbar_areas": {
+          "keys": {
+            "MinimizedDockWidgetsToolbar": {
+              "repr": "8",
+              "type": "repr"
+            }
+          },
+          "groups": {}
+        }
+      }
+    },
+    "pluginmanager": {
+      "keys": {
+        "running-plugins": {
+          "repr": "{'rqt_service_caller/ServiceCaller': [1, 2]}",
+          "type": "repr"
+        }
+      },
+      "groups": {
+        "plugin__rqt_publisher__Publisher__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__PublisherWidget": {
+              "keys": {
+                "dock_widget_title": {
+                  "repr": "'Message Publisher'",
+                  "type": "repr"
+                },
+                "dockable": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "parent": {
+                  "repr": "None",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "publishers": {
+                  "repr": "\"[{'topic_name': '/R3_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 5.0, 'enabled': False, 'publisher_id': 0, 'counter': 0, 'expressions': {'/R3_joint_position_controller/command/data': '0.0'}}, {'topic_name': '/R2_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 5.0, 'enabled': False, 'publisher_id': 1, 'counter': 0, 'expressions': {'/R2_joint_position_controller/command/data': '0.0'}}, {'topic_name': '/R1_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 5.0, 'enabled': False, 'publisher_id': 2, 'counter': 0, 'expressions': {'/R1_joint_position_controller/command/data': '-1.5'}}, {'topic_name': '/camera_head_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 5.0, 'enabled': False, 'publisher_id': 3, 'counter': 0, 'expressions': {'/camera_head_joint_position_controller/command/data': '0.0'}}, {'topic_name': '/left_act_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 5.0, 'enabled': False, 'publisher_id': 4, 'counter': 0, 'expressions': {}}, {'topic_name': '/mop_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 5.0, 'enabled': False, 'publisher_id': 5, 'counter': 0, 'expressions': {}}, {'topic_name': '/shoulder_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 5.0, 'enabled': False, 'publisher_id': 6, 'counter': 0, 'expressions': {'/shoulder_joint_position_controller/command/data': '0.1'}}, {'topic_name': '/slider_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 5.0, 'enabled': False, 'publisher_id': 7, 'counter': 0, 'expressions': {'/slider_joint_position_controller/command/data': '0.8'}}, {'topic_name': '/cmd_vel', 'type_name': 'geometry_msgs/Twist', 'rate': 1.0, 'enabled': False, 'publisher_id': 8, 'counter': 0, 'expressions': {'/cmd_vel/linear/x': '0.0'}}, {'topic_name': '/left_act_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 1.0, 'enabled': False, 'publisher_id': 9, 'counter': 0, 'expressions': {'/left_act_joint_position_controller/command/data': '0.85'}}]\"",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_service_caller__ServiceCaller__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__ServiceCallerWidget": {
+              "keys": {
+                "dock_widget_title": {
+                  "repr": "'Relocate Robot at initial run'",
+                  "type": "repr"
+                },
+                "dockable": {
+                  "repr": "True",
+                  "type": "repr"
+                },
+                "parent": {
+                  "repr": "None",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "current_service_name": {
+                  "repr": "'/saclebot/relocate_bot'",
+                  "type": "repr"
+                },
+                "splitter_orientation": {
+                  "repr": "2",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_service_caller__ServiceCaller__2": {
+          "keys": {},
+          "groups": {
+            "dock_widget__ServiceCallerWidget": {
+              "keys": {
+                "dock_widget_title": {
+                  "repr": "'Relocate tradh'",
+                  "type": "repr"
+                },
+                "dockable": {
+                  "repr": "True",
+                  "type": "repr"
+                },
+                "parent": {
+                  "repr": "None",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "current_service_name": {
+                  "repr": "'/saclebot/relocate_trash'",
+                  "type": "repr"
+                },
+                "splitter_orientation": {
+                  "repr": "2",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

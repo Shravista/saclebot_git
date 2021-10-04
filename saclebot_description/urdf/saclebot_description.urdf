@@ -3,7 +3,7 @@
 <!-- MAINTAINER OF THESE FILES - SaCleBot Team - DIAT-->
 <!-- Note to the reader for the effective simulation masses of all links are made to reduce by half -->
 <robot name="saclebot">
-                                        <!-- SaCleBot Main Assembly - Base link -->
+<!--************************************* SaCleBot Main Assembly - Base link*********************************************************************** -->
   <link name="base_footprint"/>
   <joint name="base_joint" type="fixed">
     <parent link="base_footprint"/>
@@ -13,8 +13,8 @@
   <link name="base_link"> <!-- 2 -->
     <inertial>
       <origin xyz="0.0030962 -0.0067056 -0.034909" rpy="0 0 0" />
-      <mass value="4.57525" />
-      <inertia ixx="0.053635" ixy="1.4367E-08" ixz="-0.73790E-09" iyy="0.063745" iyz="-0.075785E-09" izz="0.0111315" />
+      <mass value="1.1438125" /> <!-- divided by four-->
+      <inertia ixx="0.01340825" ixy="0.359125E-08" ixz="-0.184475E-09" iyy="0.01593625" iyz="-0.01894625E-09" izz="0.00282875" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -33,12 +33,12 @@
     </collision>
   </link>
   
-                                        <!-- SaCleBot Main Assembly -  manipulator base -->
+<!--************************************* SaCleBot Main Assembly -  manipulator base************************************************************************ -->
   <link name="base_manipulator">
     <inertial>
       <origin xyz="3.6943E-05 -0.00021046 -0.054473" rpy="0 0 0" />
-      <mass value="1.0364" />
-      <inertia ixx="0.0025042" ixy="-0.97525E-06" ixz="-3.9547E-08" iyy="0.00250305" iyz="-0.7373E-07" izz="0.0039533" />
+      <mass value="0.5182" /><!--divide by half -->
+      <inertia ixx="0.0012521" ixy="-0.487625E-06" ixz="-1.97735E-08" iyy="0.001251525" iyz="-0.36865E-07" izz="0.00197665" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -63,12 +63,12 @@
     <axis xyz="0 0 0" />
   </joint>
   
-                                    <!-- SaCleBot Main Assembly - Shoulder Link-->
+<!--************************************ SaCleBot Main Assembly - Shoulder Link***************************************************************************** -->
   <link name="shoulder_link">
     <inertial>
       <origin xyz="0.002613 0.0018963 0.57866" rpy="0 0 0" />
-      <mass value="0.6828" />
-      <inertia ixx="0.072905" ixy="-1.37205E-08" ixz="2.27745E-07" iyy="0.072845" iyz="1.49155E-07" izz="0.00036781" />
+      <mass value="0.3414" /><!-- divide by half-->
+      <inertia ixx="0.0364525" ixy="-0.686025E-08" ixz="1.138725E-07" iyy="0.0364225" iyz="0.745775E-07" izz="0.000183905" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -93,7 +93,7 @@
     <axis xyz="0 0 1" />
     <limit lower="0" upper="6.28" effort="10" velocity="2" />
   </joint>
-<!--                     SaCleBot Main Assembly -                       camera head link                                          - intel real sense D345i-->
+<!--************************************SaCleBot Main Assembly -camera head link intel real sense D345i************************************-->
   <link name="camera_head_link">
     <inertial>
       <origin xyz="0.0266863314036889 2.22044604925031E-16 0.000112026493455208" rpy="0 0 0" />
@@ -236,7 +236,7 @@
     <parent link="realsense2_link"/>
     <child link="realsense2_imu_frame"/>
   </joint>
-                                            <!-- SaCleBot Main Assembly - slider link -->
+<!--************************************ SaCleBot Main Assembly - slider link************************************************************************ -->
   <link name="slider_link">
     <inertial>
       <origin xyz="0.14315 -0.0088076 -9.8295E-07" rpy="0 0 0" /> 
@@ -296,7 +296,7 @@
     <axis xyz="0 0 1" />
     <limit lower="-3.1416" upper="0" effort="15" velocity="10" />
   </joint>
-<!--                SaCleBot Main Assembly -                                                R2 link                                                     -->
+<!--************************************SaCleBot Main Assembly -R2 link************************************************************************-->
   <link name="R2_link">
     <inertial>
       <origin xyz="0.038942 -0.00027273 -5.8282E-06" rpy="0 0 0" />
@@ -330,7 +330,7 @@
       effort="5"
       velocity="5" />
   </joint>
-<!--                        SaCleBot Main Assembly -                                     R3 - link-->
+<!--************************************SaCleBot Main Assembly -R3 link************************************************************************-->
   <link name="R3_link">
     <inertial>
       <origin xyz="0.13127 -1.2768E-15 2.8866E-15" rpy="0 0 0" />
@@ -364,7 +364,7 @@
       effort="2"
       velocity="2" />
   </joint>
-  <!--                                      SaCleBot Main Assembly                  -       Gripper -->
+  <!--************************************SaCleBot Main Assembly - Gripper ************************************************************************ -->
   <link name="gripper_base_link">
     <inertial>
       <origin xyz="0.00070517 -0.00079249 -0.039763" rpy="0 0 0" />
@@ -574,7 +574,7 @@
     <limit lower="-3.1415926" upper="3.1415926" effort="1" velocity="1" />
     <mimic joint="left_act_joint" multiplier="-1" offset="0" />
   </joint>
-  <!--                              SaCleBot Main Assembly                  imu link                    -->
+  <!--************************************ SaCleBot Main Assembly- imu link************************************************************************-->
   <link name="nxp_imu_link"> <!-- neglected for reduction -->
     <inertial>
       <origin xyz="-9.29811783123569E-16 -1.22124532708767E-15 0.0015" rpy="0 0 0" />
@@ -602,7 +602,7 @@
     <parent link="base_link" />
     <child link="nxp_imu_link" />
   </joint>
-  <!-- RP-LiDAR A3M1 -->
+  <!-- ************************************SacleBot Main Assembly - RP-LiDAR A3M1************************************************************************ -->
   <link name="RP_LiDAR_A3M1_link"> <!-- neglected for reduction -->
     <inertial>
       <origin xyz="0.0017336 -0.00015015 -0.012532" rpy="0 0 0" />
@@ -631,7 +631,7 @@
     <child link="RP_LiDAR_A3M1_link" />
     <axis xyz="0 0 0" />
   </joint>
-  <!-- mop link-->
+  <!--************************************SaCleBot Main Assembly -  mop link************************************************************************-->
   <link name="mop_link">
     <inertial>
       <origin xyz="-1.3878E-17 5.5511E-17 0.073689" rpy="0 0 0" />
@@ -660,7 +660,7 @@
     <child link="mop_link" />
     <axis xyz="0 0 1" />
   </joint>
-  <!-- front right wheel -->
+  <!-- ************************************ SacleBot Main Assembly - front right wheel ************************************************************************ -->
   <link name="frontRightWheel_link">
     <inertial>
       <origin xyz="-5.3092E-08 3.5546E-07 -0.0080247" rpy="0 0 0" />
@@ -689,7 +689,7 @@
     <child link="frontRightWheel_link" />
     <axis xyz="0 0 -1" />
   </joint>
-  <!-- rear right wheel-->
+  <!-- ************************************SaCleBot Main Assembly - rear right wheel************************************************************************  -->
   <link name="rearRightWheel_link">
     <inertial>
       <origin xyz="-1.1869E-07 1.9139E-07 -0.0080203" rpy="0 0 0" />
@@ -718,7 +718,7 @@
     <child link="rearRightWheel_link" />
     <axis xyz="0 0 -1" />
   </joint>
-  <!-- front left wheel -->
+  <!--************************************ SaCleBot Main Assembly - front left wheel ************************************************************************ -->
   <link name="frontLeftWheel_link">
     <inertial>
       <origin xyz="5.8442E-08 -2.1845E-07 -0.0080203" rpy="0 0 0" />
@@ -747,7 +747,7 @@
     <child link="frontLeftWheel_link" />
     <axis xyz="0 0 1" />
   </joint>
-  <!-- rear left wheel -->
+  <!--************************************ SaCleBot Main Assembly - rear left wheel ************************************************************************ -->
   <link name="rearLeftWheel_link">
     <inertial>
       <origin xyz="-3.3704E-07 1.1934E-07 -0.0080247" rpy="0 0 0" />
@@ -777,7 +777,7 @@
     <axis xyz="0 0 1" />
   </joint>
   
-  <!-- Gazebo elements-->
+  <!-- ************************************************************************Gazebo elements************************************************************************-->
   
   <gazebo>
 		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so"/>
@@ -838,7 +838,7 @@
     <mu2>0.2</mu2>
   </gazebo>
   
-  <!-- Gazebo sensor links-->
+  <!-- ************************************************************************ IMU NXP************************************************************************-->
   <gazebo reference="nxp_imu_link">
     <gravity>true</gravity>
     <sensor name="imu_sensor" type="imu">
@@ -859,6 +859,7 @@
       <pose>0 0 0 0 0 0</pose>
     </sensor>
   </gazebo>
+  <!--************************************************************************ RealSense d345i ************************************************************************-->
   
   <gazebo reference="realsense2_imu_frame">
     <gravity>true</gravity>
@@ -1001,25 +1002,35 @@
         </plugin>
     </sensor>  
   </gazebo>
+<!--************************************************************************ Force based cmd ************************************************************************-->
+<!--  <gazebo>-->
+<!--    <plugin name="meccanum_ros_force_based_move" filename="librobot_force_based_move.so">-->
+<!--      <commandTopic>cmd_vel</commandTopic>-->
+<!--      <odometryTopic>odom</odometryTopic>-->
+<!--      <odometryFrame>odom</odometryFrame>-->
+<!--      <odometryRate>25.0</odometryRate>-->
+<!--      <robotBaseFrame>base_footprint</robotBaseFrame>-->
+<!--      <cmdVelTimeOut>0.25</cmdVelTimeOut>-->
+<!--      <publishOdometryTf>1</publishOdometryTf>-->
+<!--      <yaw_velocity_p_gain>1.0</yaw_velocity_p_gain>-->
+<!--      <x_velocity_p_gain>15.0</x_velocity_p_gain>-->
+<!--      <y_velocity_p_gain>15.0</y_velocity_p_gain>-->
+<!--      <max_x_velocity>10.0</max_x_velocity>-->
+<!--      <max_y_velocity>10.0</max_y_velocity>-->
+<!--      <max_yaw_velocity>10.0</max_yaw_velocity>-->
+<!--    </plugin>-->
+<!--  </gazebo>-->
   <gazebo>
-    <plugin name="meccanum_ros_force_based_move" filename="librobot_force_based_move.so">
+    <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
-      <odometryRate>25.0</odometryRate>
+      <odometryRate>20.0</odometryRate>
       <robotBaseFrame>base_footprint</robotBaseFrame>
-      <cmdVelTimeOut>0.25</cmdVelTimeOut>
-      <publishOdometryTf>1</publishOdometryTf>
-      <yaw_velocity_p_gain>1.0</yaw_velocity_p_gain>
-      <x_velocity_p_gain>15.0</x_velocity_p_gain>
-      <y_velocity_p_gain>15.0</y_velocity_p_gain>
-      <max_x_velocity>0.6</max_x_velocity>
-      <max_y_velocity>0.6</max_y_velocity>
-      <max_yaw_velocity>0.5</max_yaw_velocity>
     </plugin>
   </gazebo>
   
-        
+<!--************************************************************************ RPLIDAR sensor ************************************************************************-->
         
   <gazebo reference="RP_LiDAR_A3M1_link">
     <sensor type="ray" name="head_rplidar_sensor">
@@ -1031,8 +1042,8 @@
           <horizontal>
             <samples>720</samples>
             <resolution>1</resolution>
-            <min_angle>-3.0543261909900767596164588</min_angle>
-            <max_angle>3.0543261909900767596164588</max_angle>
+            <min_angle>-3.0368728984701334638472219</min_angle>
+            <max_angle>3.0368728984701334638472219</max_angle>
           </horizontal>
         </scan>
         <range>
@@ -1053,6 +1064,7 @@
     </sensor>
   </gazebo>
   
+<!-- ************************************************************************Transmission Elements ************************************************************************-->
   <transmission name="trans1">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="frontRightWheel_joint">
@@ -1184,6 +1196,8 @@
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>
   </transmission>
+  
+  <!-- ************************************************************************Mimic Plugins ************************************************************************-->
   
   <gazebo>
   	<plugin name="rocker_left_joint_plugin" filename="libroboticsgroup_upatras_gazebo_mimic_joint_plugin.so">

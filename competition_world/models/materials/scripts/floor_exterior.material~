@@ -1,0 +1,42 @@
+material FloorExteriorTexture
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/LightWoodenParquetFlooring03_2K_BaseColor.png
+       scale 0.25 0.25
+      }
+    }
+  }
+}
+material FloorInteriorTexture
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/BlueHerringboneTiles01_2K_BaseColor.png
+       scale 0.25 0.25
+      }
+    }
+  }
+}
+material FloorInteriorTexture
+{
+ technique
+  {
+   pass
+    {
+     texture_unit
+      {
+       texture ../textures/BlueHerringboneTiles01_2K_Normal.png
+       scale 0.25 0.25
+      }
+    }
+  }
+}

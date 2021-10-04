@@ -31,4 +31,8 @@
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
         respawn="false" output="screen" >
     </node>
+    
+    <!-- **************************************** Service for relocating the robot **************************************************************************************--> 
+    <node name="saclebot_relocate" type="relocate_robot.py" pkg="saclebot_description" output="screen"/>       
+    
 </launch>

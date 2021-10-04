@@ -417,4 +417,3 @@ namespace gazebo
 
   GZ_REGISTER_MODEL_PLUGIN(GazeboRosForceBasedMove)
 }
-
